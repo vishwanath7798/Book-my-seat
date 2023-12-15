@@ -1,170 +1,119 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
 }
 
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-    color: #ffffff;
-    background-color: blue;
+body {
+  background-color: rgb(40, 21, 133);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+  margin: 0;
 }
 
-.logo{
-    flex: 1;
-}
-nav ul{
-    flex: 1;
-    display: flex;
-    justify-content: space-evenly;
+.movie-container {
+  margin: 20px 0;
 }
 
-nav ul li{
-    list-style-type: none;
-}
-main{
-    padding: 1rem;
-    width: 100%;
-}
-.movie-holder{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-}
-.movie-holder a{
-    flex: 1;
+.movie-container select {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+  /* -moz-appearance: none;
+  -webkit-appearance: none; */
+  appearance: none;
 }
 
-#loader{
-    position: relative;
-    height: 60px;
-    width: 60px;
-    display: grid;
-    place-content: center;
-    border-radius: 50%;
-    border: 10px solid #ccc;
-}
-#loader::before{
-    box-sizing: border-box;
-    position: absolute;
-    content: "";
-    height: calc(100% + 22px);
-    width: calc(100% + 22px);
-    top: -11px;
-    left: -11px;
-    border-radius: 50%;
-    border-style: solid;
-    border-width: 10px;
-    border-color: #081563 transparent transparent transparent;
-    animation: rotate .6s linear infinite;
+.container {
+  perspective: 1000px;
+  margin-bottom: 30px;
 }
 
-.movie-img-wrapper{
-    background-size: cover;
-    width: auto;
-    height: 250px;
-}
-#booker{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-#booker-grid-holder{
-    display: grid;
-    grid-template-columns: repeat(2, 200px);
-    gap: 2rem;
+.seat {
+  background-color: #444451;
+  height: 12px;
+  width: 15px;
+  margin: 3px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.booking-grid{
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: .5rem;
-    height: 150px;
-    width: 200px;
-    color: #fff;
-    font-weight: 600;
-}
-#confirm-purchase{
-    display: grid;
-    place-items: center;
-    font-size: 1.2rem;
-}
-#booking-grid-undefined{
-    font-size: auto;
+/* Style for Standard seats */
+.seat.standard {
+  background-color: red; /* Change color as needed */
 }
 
-.seat{
-    display: grid;
-    place-content: center;
-    /* background-color: pink; */
+/* Style for Premium seats */
+.seat.premium {
+  background-color: blue; /* Change color as needed */
 }
-.available-seat{
-    background-color: rgb(196, 190, 190);
-    cursor: pointer;
+
+.seat.selected {
+  background-color: #6feaf6;
 }
-.unavailable-seat{
-    background-color: rgb(99, 98, 98);
-    /* cursor: pointer; */
+
+.seat.occupied {
+  background-color: #fff;
 }
-.select-seat{
-    border:4px outset greenyellow;
-    background-color: greenyellow;
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
 }
-.spn_color{
-    width: 20px !important;
-    height: 18px !important;
-    background-color: rgb(196, 190, 190);
-    border: 1px solid gray;
-    border-radius: 5px;
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
 }
-.spn{
-    display: flex;
-    /* background-color: #081563; */
-    width: 340px;
-    justify-content: space-between;
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.showcase {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 2px;
+}
+
+.row {
+  display: flex;
 }
 
 
-.d-none{
-    display: none;
-}
-.v-none{
-    visibility: hidden;
+
+p.text {
+  margin: 5px 0;
 }
 
-input, button[type="submit"]{
-    width: 200px;
-    height: 35px;
-    padding: .5rem;
+p.text span {
+  color: #6feaf6;
 }
-#book-ticket-btn{
-    width: 100px;
-    height: 23px;
-    background-color: red;
-    color: white;
-    cursor: pointer;
-}
-.select_qty{
-    width: 70px;
-    height: 20px;
-    position: absolute;
-    right: 27%;
-    top: 70%;
-}
-.ticket_type{
-    position: absolute;
-    right: 19%;
-    top: 70%;
-}
-@keyframes rotate {
-    from{transform: rotate(0deg);}
-    to{transform: rotate(360deg);}
-}
+
